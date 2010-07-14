@@ -23,5 +23,9 @@ module Grin
       end
     end
     
+    def create_photo(image_data)
+      post("albums/#{id}/photos.json", { :photo => { :image => image_data } })
+    end
+    
   end
 end

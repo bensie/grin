@@ -20,7 +20,7 @@ module Grin
       end
     end
     
-    def create_album(title, category_id)
+    def create_album(title, category_id = nil)
       if album = post("albums.json", { :album => { :title => title, :category_id => category_id } })
         return Album.new(album, @auth_string)
       end
