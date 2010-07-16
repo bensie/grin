@@ -27,5 +27,13 @@ module Grin
       post("albums/#{id}/photos.json", { :photo => { :image => image_data } })
     end
     
+    def find_or_create_photo(filename, image_data)
+      if photo = photos.select { |p| p.filename == filename }.pop
+        return photo
+      else
+        create_photo(image_data)
+      end
+    end
+    
   end
 end

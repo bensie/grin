@@ -26,6 +26,14 @@ module Grin
       end
     end
     
+    def find_or_create_album(title, category_id = nil)
+      if album = albums.select { |a| a.title == title }.pop
+        return album
+      else
+        create_album(title, category_id)
+      end
+    end
+    
     private
   
     def get(path)
