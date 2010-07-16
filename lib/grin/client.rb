@@ -20,17 +20,43 @@ module Grin
       end
     end
     
-    def create_album(title, category_id = nil)
+    def create_album(title, category_id = categories.first.id)
       if album = post("albums.json", { :album => { :title => title, :category_id => category_id } })
         return Album.new(album, @auth_string)
       end
     end
     
-    def find_or_create_album(title, category_id = nil)
+    def find_or_create_album(title, category_id)
       if album = albums.select { |a| a.title == title }.pop
         return album
       else
         create_album(title, category_id)
+      end
+    end
+    
+    def categories
+      categories = []
+      get('categories.json').each { |category| categories << Category.new(category, @auth_string) }
+      return categories
+    end
+    
+    def category(id)
+      if category = get("categories/#{id}.json")
+        Category.new(category, @auth_string)
+      end
+    end
+    
+    def create_category(name)
+      if category = post("categories.json", { :category => { :name => name } })
+        return Category.new(category, @auth_string)
+      end
+    end
+    
+    def find_or_create_category(name)
+      if category = categories.select { |c| c.name == name }.pop
+        return category
+      else
+        create_category(name)
       end
     end
     
