@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "grin"
-  s.version = "0.9.3"
+  s.version = "0.9.4"
   s.authors = ["James Miller"]
   s.date = "2010-07-16"
   s.summary = %q{Ruby wrapper for the Fotogger API}
