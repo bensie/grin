@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name = "grin"
-  s.version = "0.9.0"
+  s.version = "0.9.1"
   s.authors = ["James Miller"]
-  s.date = "2010-07-11"
+  s.date = "2010-07-14"
   s.summary = %q{Ruby wrapper for the Fotogger API}
   s.description = %q{Grin is a simple Ruby wrapper for the Fotogger API v1 specification. It currently supports finding and creating albums and photos.}
   s.homepage = "http://github.com/bensie/grin"
