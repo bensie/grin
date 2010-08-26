@@ -1,6 +1,6 @@
 module Grin
   class Category < Client
-    
+
     def initialize(data)
       data.each do |key, value|
         instance_variable_set("@#{key}", value)
@@ -9,12 +9,12 @@ module Grin
         end
       end
     end
-    
+
     def albums
       albums = []
       get('albums.json').select { |album| album['category']['id'] == id  }.each { |album| albums << Album.new(album) }
       return albums
     end
-    
+
   end
 end

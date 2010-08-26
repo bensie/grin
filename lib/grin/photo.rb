@@ -1,6 +1,6 @@
 module Grin
   class Photo < Client
-    
+
     def initialize(data)
       data.each do |key, value|
         instance_variable_set("@#{key}", value)
@@ -9,6 +9,6 @@ module Grin
         end
       end
     end
-    
+
   end
 end
