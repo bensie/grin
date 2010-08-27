@@ -16,5 +16,9 @@ module Grin
       return albums
     end
 
+    def destroy
+      delete("categories/#{id}.json")
+    end
+
   end
 end

@@ -34,5 +34,9 @@ module Grin
       end
     end
 
+    def destroy
+      delete("albums/#{id}")
+    end
+
   end
 end

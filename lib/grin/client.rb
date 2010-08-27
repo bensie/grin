@@ -4,7 +4,7 @@ module Grin
   class Client
 
     API_VERSION = "v1"
-    DOMAIN = "fotogger.com"
+    DOMAIN = "fotogger.local"
 
     def initialize(subdomain, email, password)
       @@auth_string = CGI.escape(email) + ':' + CGI.escape(password) + "@" + subdomain
@@ -70,6 +70,10 @@ module Grin
 
     def post(path, params = {})
       JSON.parse(RestClient.post("http://#{@@auth_string}.#{DOMAIN}/api/#{API_VERSION}/#{path}", params))
+    end
+
+    def delete(path)
+      JSON.parse(RestClient.delete("http://#{@@auth_string}.#{DOMAIN}/api/#{API_VERSION}/#{path}"))
     end
 
   end
