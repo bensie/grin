@@ -4,7 +4,7 @@ module Grin
   class Client
 
     API_VERSION = "v1"
-    DOMAIN = "fotogger.local"
+    DOMAIN = "fotogger.com"
 
     def initialize(subdomain, email, password)
       @@auth_string = CGI.escape(email) + ':' + CGI.escape(password) + "@" + subdomain

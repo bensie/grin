@@ -35,7 +35,7 @@ module Grin
     end
 
     def destroy
-      delete("albums/#{id}")
+      delete("albums/#{id}.json")
     end
 
   end

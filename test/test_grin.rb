@@ -1,9 +1,9 @@
 require 'helper'
 
 class TestGrin < Test::Unit::TestCase
-  SUBDOMAIN = "bensie"
-  EMAIL     = "bensie@gmail.com"
-  PASSWORD  = "jkmeslyl"
+  SUBDOMAIN = ""
+  EMAIL     = ""
+  PASSWORD  = ""
 
   context "New connection" do
 
