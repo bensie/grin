@@ -65,15 +65,19 @@ module Grin
     private
 
     def get(path)
-      JSON.parse(RestClient.get("http://#{@@auth_string}.#{DOMAIN}/api/#{API_VERSION}/#{path}"))
+      JSON.parse(RestClient.get(url(path)))
     end
 
     def post(path, params = {})
-      JSON.parse(RestClient.post("http://#{@@auth_string}.#{DOMAIN}/api/#{API_VERSION}/#{path}", params))
+      JSON.parse(RestClient.post(url(path), params))
     end
 
     def delete(path)
-      JSON.parse(RestClient.delete("http://#{@@auth_string}.#{DOMAIN}/api/#{API_VERSION}/#{path}"))
+      JSON.parse(RestClient.delete(url(path)))
+    end
+
+    def url(path)
+      "http://#{@@auth_string}.#{DOMAIN}/api/#{API_VERSION}/#{path}"
     end
 
   end
