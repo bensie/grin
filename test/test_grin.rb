@@ -43,8 +43,8 @@ class TestGrin < Test::Unit::TestCase
       should "delete the album followed by the category" do
         album_response = @album.destroy
         category_response = @category.destroy
-        assert_equal "ok", album_response['status']
-        assert_equal "ok", category_response['status']
+        assert_equal "success", album_response['result']
+        assert_equal "success", category_response['result']
       end
 
     end

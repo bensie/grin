@@ -18,7 +18,7 @@ module Grin
 
     def album(id)
       album = get("albums/#{id}.json")
-      if album.respond_to?(:[]) && album['status'] == 'error'
+      if album.respond_to?(:[]) && album['result'] == 'failure'
         return album
       else
         Album.new(album)
@@ -27,7 +27,7 @@ module Grin
 
     def create_album(title, category_id = categories.first.id)
       album = post("albums.json", { :album => { :title => title, :category_id => category_id } })
-      if album.respond_to?(:[]) && album['status'] == 'error'
+      if album.respond_to?(:[]) && album['result'] == 'failure'
         return album
       else
         Album.new(album)
@@ -50,7 +50,7 @@ module Grin
 
     def category(id)
       category = get("categories/#{id}.json")
-      if category.respond_to?(:[]) && category['status'] == 'error'
+      if category.respond_to?(:[]) && category['result'] == 'failure'
         return category
       else
         Category.new(category)
@@ -59,7 +59,7 @@ module Grin
 
     def create_category(name)
       category = post("categories.json", { :category => { :name => name } })
-      if category.respond_to?(:[]) && category['status'] == 'error'
+      if category.respond_to?(:[]) && category['result'] == 'failure'
         return category
       else
         Category.new(category)
