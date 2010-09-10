@@ -37,7 +37,7 @@ class TestGrin < Test::Unit::TestCase
 
       should "not allow you to delete the category when the album exists" do
         response = @category.destroy
-        assert_equal "Cannot delete category that contains albums", response['error']
+        assert_equal "Cannot delete record because of dependent albums", response['error']
       end
 
       should "delete the album followed by the category" do
