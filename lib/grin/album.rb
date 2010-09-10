@@ -17,8 +17,11 @@ module Grin
     end
 
     def photo(photo_id)
-      if photo = get("albums/#{id}/photos/#{photo_id}.json")
-        return Photo.new(photo)
+      photo = get("albums/#{id}/photos/#{photo_id}.json")
+      if photo.respond_to?(:[]) && photo['status'] == 'error'
+        return photo
+      else
+        Photo.new(photo)
       end
     end
 

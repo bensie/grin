@@ -17,14 +17,20 @@ module Grin
     end
 
     def album(id)
-      if album = get("albums/#{id}.json")
+      album = get("albums/#{id}.json")
+      if album.respond_to?(:[]) && album['status'] == 'error'
+        return album
+      else
         Album.new(album)
       end
     end
 
     def create_album(title, category_id = categories.first.id)
-      if album = post("albums.json", { :album => { :title => title, :category_id => category_id } })
-        return Album.new(album)
+      album = post("albums.json", { :album => { :title => title, :category_id => category_id } })
+      if album.respond_to?(:[]) && album['status'] == 'error'
+        return album
+      else
+        Album.new(album)
       end
     end
 
@@ -43,19 +49,26 @@ module Grin
     end
 
     def category(id)
-      if category = get("categories/#{id}.json")
+      category = get("categories/#{id}.json")
+      if category.respond_to?(:[]) && category['status'] == 'error'
+        return category
+      else
         Category.new(category)
       end
     end
 
     def create_category(name)
-      if category = post("categories.json", { :category => { :name => name } })
-        return Category.new(category)
+      category = post("categories.json", { :category => { :name => name } })
+      if category.respond_to?(:[]) && category['status'] == 'error'
+        return category
+      else
+        Category.new(category)
       end
     end
 
     def find_or_create_category(name)
-      if category = categories.select { |c| c.name == name }.pop
+      category = categories.select { |c| c.name == name }.pop
+      if category
         return category
       else
         create_category(name)
